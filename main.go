@@ -1,18 +1,11 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	"github.com/devopscodeck/Ginutility/database"
+	"github.com/devopscodeck/Ginutility/routes"
 )
 
-func ExibeTodosAlunos(c *gin.Context) {
-	c.JSON(200, gin.H{
-		"id":   "1",
-		"nome": "Galileu",
-	})
-}
-
 func main() {
-	r := gin.Default()
-	r.GET("/alunos", ExibeTodosAlunos)
-	r.Run(":5000")
+	database.ConectaComBancoDeDados()
+	routes.HandleRequests()
 }
